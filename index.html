@@ -2131,31 +2131,38 @@ function showAnalytics() {
   </div>
 
   <!-- PASSWORD RESET MODAL -->
-  <div id="password-reset-modal" class="fixed inset-0 z-50 hidden" style="background-color: #ffffff !important;">
-    <div class="min-h-screen flex flex-col justify-center p-6">
-      <div class="flex items-center mb-8">
-        <button onclick="closePasswordReset()" class="text-blue-600 font-medium mr-4">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+  <div id="password-reset-modal" class="fixed inset-0 z-50 hidden" style="background-color: #f2f2f7 !important;">
+    <!-- Header estilo iPhone -->
+    <div class="sticky top-0 z-10 bg-white/95 backdrop-blur-xl border-b border-gray-200">
+      <div class="flex items-center justify-between px-6 py-4">
+        <button onclick="closePasswordReset()" class="text-blue-600 font-medium text-base">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
           </svg>
         </button>
         <h1 class="text-lg font-semibold text-gray-900">Reset Password</h1>
+        <div class="w-6"></div>
       </div>
+    </div>
 
+    <!-- Contenido -->
+    <div class="px-6 py-8">
       <div class="max-w-sm mx-auto w-full">
         <div class="text-center mb-8">
-          <div class="w-20 h-20 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1721 9z" />
+          <div class="w-24 h-24 mx-auto mb-6 bg-blue-100 rounded-full flex items-center justify-center shadow-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
             </svg>
           </div>
-          <h2 class="text-2xl font-semibold text-gray-900 mb-2">Forgot Password?</h2>
-          <p class="text-gray-600 text-sm">Enter your email and we'll send you a reset link</p>
+          <h2 class="text-3xl font-bold text-gray-900 mb-3">Forgot Password?</h2>
+          <p class="text-gray-600 text-base leading-relaxed">Enter your email address and we'll send you a link to reset your password</p>
         </div>
 
-        <form id="reset-form" class="space-y-4">
-          <input id="reset-email" type="email" placeholder="Email address" class="w-full px-4 py-4 bg-white border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm" required>
-          <button id="reset-submit" type="submit" class="w-full bg-blue-600 text-white py-4 font-semibold rounded-xl hover:bg-blue-700 active:scale-[0.98] transition-all shadow-md">Send Reset Link</button>
+        <form id="reset-form" class="space-y-6">
+          <div>
+            <input id="reset-email" type="email" placeholder="Email address" class="w-full px-5 py-4 bg-white border border-gray-200 rounded-2xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm text-base" required>
+          </div>
+          <button id="reset-submit" type="submit" class="w-full bg-blue-600 text-white py-4 font-semibold rounded-2xl hover:bg-blue-700 active:scale-[0.98] transition-all shadow-lg text-base">Send Reset Link</button>
         </form>
 
         <div id="rate-limit-msg" class="hidden mt-4 p-4 bg-orange-50 border border-orange-200 rounded-xl">
@@ -3679,36 +3686,16 @@ document.head.appendChild(style);
 <div id="profile-view" class="fixed inset-0 overflow-y-auto z-40 hidden scrollbar-hide" style="background-color: #f9f9f9 !important; color: #000000 !important;">
   <!-- Vista móvil -->
   <div class="block lg:hidden">
-    <!-- Header con botón volver y botones de acción -->
-    <div class="sticky top-0 z-10 bg-white/80 backdrop-blur-xl border-b border-gray-100 px-6 py-4">
-      <div class="flex justify-between items-center">
-      <button onclick="openHome()" class="w-9 h-9 flex items-center justify-center rounded-full hover:bg-gray-100 transition">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <polyline points="15 18 9 12 15 6" />
+
+    
+    <div class="px-6 py-6 relative">
+      <!-- Botón de ajustes en esquina superior derecha -->
+      <button onclick="openProfileEdit()" class="absolute top-4 right-4 w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors z-10">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
         </svg>
       </button>
-      
-      <h1 class="text-2xl font-bold text-gray-900 tracking-tight">Profile</h1>
-      
-      <!-- Botones de acción en la esquina superior derecha -->
-      <div class="flex items-center space-x-2">
-        <button onclick="openStoryCreation()" class="w-9 h-9 flex items-center justify-center rounded-full hover:bg-gray-100 transition">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-          </svg>
-        </button>
-        
-        <button onclick="openProfileEdit()" class="w-9 h-9 flex items-center justify-center rounded-full hover:bg-gray-100 transition">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-          </svg>
-        </button>
-      </div>
-      </div>
-    </div>
-    
-    <div class="px-6 py-6">
 
     <div class="flex flex-col items-center">
       <!-- Imagen de perfil centrada -->
