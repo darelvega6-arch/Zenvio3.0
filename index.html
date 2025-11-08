@@ -8136,6 +8136,10 @@ document.getElementById('category-filter').addEventListener('change', performRea
   /*********************** PERFIL DEL AUTOR **************************/
   function openAuthorProfile(authorId) {
     document.getElementById('story-detail-modal').classList.add('hidden');
+
+    // Lógica de visibilidad de barras: Ocultar barra superior y mostrar barra inferior
+    document.getElementById('top-nav').classList.add('hidden');
+    document.getElementById('bottom-nav').classList.remove('hidden');
     
     // Check if current user is the profile owner
     const currentUser = firebase.auth().currentUser;
@@ -8267,6 +8271,9 @@ document.getElementById('category-filter').addEventListener('change', performRea
     if (document.getElementById('search-view').classList.contains('hidden')) {
       document.getElementById('story-detail-modal').classList.remove('hidden');
     }
+    // Lógica de visibilidad de barras: Mostrar barra superior y barra inferior
+    document.getElementById('top-nav').classList.remove('hidden');
+    document.getElementById('bottom-nav').classList.remove('hidden');
   }
 
   function closeBlockedErrorModal() {
@@ -8481,12 +8488,12 @@ document.getElementById('category-filter').addEventListener('change', performRea
         });
       }
       
-      document.getElementById('following-modal').style.display = "block";
+      document.getElementById('following-modal').classList.remove('hidden');
     });
   }
 
   function closeFollowingModal() {
-    document.getElementById('following-modal').style.display = "none";
+    document.getElementById('following-modal').classList.add('hidden');
   }
 
   function openFollowersModal() {
@@ -8534,12 +8541,12 @@ document.getElementById('category-filter').addEventListener('change', performRea
         });
       }
       
-      document.getElementById('followers-modal').style.display = "block";
+      document.getElementById('followers-modal').classList.remove('hidden');
     });
   }
 
   function closeFollowersModal() {
-    document.getElementById('followers-modal').style.display = "none";
+    document.getElementById('followers-modal').classList.add('hidden');
   }
 
   function openMyFollowersModal() {
