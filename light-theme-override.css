@@ -109,3 +109,97 @@ p, span, div, h1, h2, h3, h4, h5, h6 {
 ::-webkit-scrollbar-thumb {
   background-color: #c1c1c1 !important;
 }
+
+/* Eliminar TODOS los fondos negros */
+*[style*="background: #000"],
+*[style*="background-color: #000"],
+*[style*="background: black"],
+*[style*="background-color: black"],
+*[style*="background: rgb(0,0,0)"],
+*[style*="background-color: rgb(0,0,0)"] {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+}
+
+/* Eliminar todas las animaciones de spin */
+*[class*="spin"],
+*[class*="loading"],
+*[class*="spinner"] {
+  animation: none !important;
+  display: none !important;
+}
+
+@keyframes spin {
+  to { transform: none !important; }
+}
+
+/* Elementos específicos que pueden tener fondo negro */
+#story-viewer,
+.story-content,
+.story-viewer,
+.modal-overlay,
+.overlay,
+.backdrop {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+}
+
+/* Gradientes oscuros a claros */
+*[style*="rgba(0,0,0"] {
+  background: rgba(255,255,255,0.9) !important;
+}
+
+/* Texto blanco a negro */
+*[style*="color: #fff"],
+*[style*="color: white"],
+*[style*="color: #ffffff"] {
+  color: #000000 !important;
+}
+
+/* Arreglar selectores y botones con fondo negro */
+.search-tab-button.bg-gray-900,
+.community-tab.bg-gray-900,
+.notif-filter.bg-gray-900,
+.category-chip.bg-gray-900 {
+  background-color: #1f2937 !important;
+  color: #ffffff !important;
+}
+
+.search-tab-button.bg-gray-100,
+.community-tab.bg-gray-100,
+.notif-filter.bg-gray-100,
+.category-chip.bg-gray-100 {
+  background-color: #f3f4f6 !important;
+  color: #111827 !important;
+}
+
+/* Arreglar texto en fondos oscuros */
+*[style*="background-color: #1f2937"],
+*[style*="background-color: #374151"],
+*[style*="background-color: #4b5563"],
+*[style*="background-color: #6b7280"],
+*[style*="background-color: #9ca3af"] {
+  color: #ffffff !important;
+}
+
+/* Arreglar texto en fondos claros */
+*[style*="background-color: #f3f4f6"],
+*[style*="background-color: #e5e7eb"],
+*[style*="background-color: #d1d5db"],
+*[style*="background-color: #ffffff"] {
+  color: #111827 !important;
+}
+
+/* Elementos específicos con fondos oscuros necesitan texto blanco */
+.bg-gray-800,
+.bg-gray-900,
+.bg-black {
+  color: #ffffff !important;
+}
+
+/* Elementos específicos con fondos claros necesitan texto negro */
+.bg-white,
+.bg-gray-50,
+.bg-gray-100 {
+  color: #000000 !important;
+}

@@ -393,15 +393,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             menu.classList.remove('active');
                             setTimeout(() => menu.remove(), 300);
                             
-                            // Mostrar animación de carga
-                            const loadingDiv = document.createElement('div');
-                            loadingDiv.className = 'delete-loading';
-                            loadingDiv.innerHTML = '<div class="spinner"></div>';
-                            document.body.appendChild(loadingDiv);
-                            
                             await deleteStory(storyIdToDelete);
-                            
-                            loadingDiv.remove();
                         });
                         
                         // Cerrar menú al hacer click fuera

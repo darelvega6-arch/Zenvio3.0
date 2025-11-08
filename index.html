@@ -1909,6 +1909,147 @@ function markAllAsRead() {
   <img src="https://ideogram.ai/g/hJJQb0VZSQicLDiADD7CZQ/3" alt="Historia Bloqueada" class="w-3/4 h-auto">
 </div>
 
+<!-- BEABOO STUDIO -->
+<div id="beaboo-studio-view" class="fixed inset-0 overflow-y-auto hidden z-50" style="background-color: #f2f2f7 !important;">
+  <div class="sticky top-0 z-10 bg-white/95 backdrop-blur-xl border-b border-gray-200">
+    <div class="flex items-center justify-between px-6 py-4">
+      <button onclick="closeBeabooStudio()" class="text-blue-600 font-medium">Done</button>
+      <h1 class="text-lg font-semibold text-gray-900">BeaBoo Studio</h1>
+      <div class="w-12"></div>
+    </div>
+  </div>
+  
+  <div class="px-6 py-6">
+    <div class="text-center mb-8">
+      <div class="w-20 h-20 mx-auto mb-4 bg-gradient-to-br from-blue-500 to-purple-600 rounded-3xl flex items-center justify-center shadow-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/>
+        </svg>
+      </div>
+      <h2 class="text-2xl font-bold text-gray-900 mb-2">Your Creative Hub</h2>
+      <p class="text-gray-600">Manage and analyze your content</p>
+    </div>
+
+    <div class="grid grid-cols-2 gap-4 mb-6">
+      <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
+        <div class="text-center">
+          <div class="text-2xl font-bold text-gray-900 mb-1" id="studio-stories-count">0</div>
+          <div class="text-sm text-gray-600">Stories</div>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
+        <div class="text-center">
+          <div class="text-2xl font-bold text-gray-900 mb-1" id="studio-views-count">0</div>
+          <div class="text-sm text-gray-600">Total Views</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="space-y-3">
+      <button onclick="openStoryCreation(); closeBeabooStudio();" class="w-full bg-white rounded-2xl p-4 border border-gray-200 active:scale-95 transition-all duration-200">
+        <div class="flex items-center">
+          <div class="w-12 h-12 bg-gray-800 rounded-xl flex items-center justify-center mr-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+            </svg>
+          </div>
+          <div class="flex-1 text-left">
+            <div class="font-semibold text-gray-900">New Story</div>
+            <div class="text-sm text-gray-500">Create a new story</div>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </div>
+      </button>
+
+      <button onclick="loadMyStories()" class="w-full bg-white rounded-2xl p-4 border border-gray-200 active:scale-95 transition-all duration-200">
+        <div class="flex items-center">
+          <div class="w-12 h-12 bg-gray-700 rounded-xl flex items-center justify-center mr-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+          </div>
+          <div class="flex-1 text-left">
+            <div class="font-semibold text-gray-900">My Stories</div>
+            <div class="text-sm text-gray-500">View and edit stories</div>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </div>
+      </button>
+
+      <button onclick="showAnalytics()" class="w-full bg-white rounded-2xl p-4 border border-gray-200 active:scale-95 transition-all duration-200">
+        <div class="flex items-center">
+          <div class="w-12 h-12 bg-gray-600 rounded-xl flex items-center justify-center mr-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+          </div>
+          <div class="flex-1 text-left">
+            <div class="font-semibold text-gray-900">Analytics</div>
+            <div class="text-sm text-gray-500">View performance</div>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+function openBeabooStudio() {
+  document.getElementById('beaboo-studio-view').classList.remove('hidden');
+  document.getElementById('main-app').classList.add('hidden');
+}
+
+function closeBeabooStudio() {
+  document.getElementById('beaboo-studio-view').classList.add('hidden');
+  document.getElementById('main-app').classList.remove('hidden');
+}
+
+function openCommunity() {
+  document.getElementById('community-view').classList.remove('hidden');
+  document.getElementById('main-app').classList.add('hidden');
+  setActiveNavButton('community');
+}
+
+function closeCommunity() {
+  document.getElementById('community-view').classList.add('hidden');
+  document.getElementById('main-app').classList.remove('hidden');
+}
+
+function openCreatorHub() {
+  document.getElementById('creator-hub-view').classList.remove('hidden');
+  document.getElementById('main-app').classList.add('hidden');
+  setActiveNavButton('create');
+}
+
+function closeCreatorHub() {
+  document.getElementById('creator-hub-view').classList.add('hidden');
+  document.getElementById('main-app').classList.remove('hidden');
+}
+
+function openHome() {
+  document.getElementById('main-app').classList.remove('hidden');
+  document.querySelectorAll('.fixed.inset-0').forEach(el => {
+    if (el.id !== 'main-app') el.classList.add('hidden');
+  });
+  setActiveNavButton('home');
+}
+
+function loadMyStories() {
+  alert('My Stories feature coming soon!');
+}
+
+function showAnalytics() {
+  alert('Analytics feature coming soon!');
+}
+</script>
+
 <body class="bg-white font-sans text-black" style="background-color: #ffffff !important; color: #000000 !important;">
   
   <div id="auth-form" class="w-full min-h-screen flex flex-col justify-center p-6 bg-white">
@@ -2892,16 +3033,22 @@ function switchCommunityTab(tab) {
   document.querySelectorAll('.community-tab').forEach(btn => {
     btn.classList.remove('bg-gray-900', 'text-white');
     btn.classList.add('bg-gray-100', 'text-gray-900');
+    btn.style.backgroundColor = '#f3f4f6';
+    btn.style.color = '#111827';
   });
   
   if (tab === 'feed') {
     feedTab.classList.add('bg-gray-900', 'text-white');
     feedTab.classList.remove('bg-gray-100', 'text-gray-900');
+    feedTab.style.backgroundColor = '#1f2937';
+    feedTab.style.color = '#ffffff';
     feedContent.classList.remove('hidden');
     photosContent.classList.add('hidden');
   } else {
     photosTab.classList.add('bg-gray-900', 'text-white');
     photosTab.classList.remove('bg-gray-100', 'text-gray-900');
+    photosTab.style.backgroundColor = '#1f2937';
+    photosTab.style.color = '#ffffff';
     photosContent.classList.remove('hidden');
     feedContent.classList.add('hidden');
   }
@@ -2982,18 +3129,12 @@ document.getElementById('note-content')?.addEventListener('input', function() {
   
   <div class="px-6 py-4">
 
-    <!-- Loading animation -->
-    <div id="search-loading" class="hidden">
-      <div class="flex flex-col items-center justify-center py-16">
-        <div class="w-8 h-8 border-2 border-gray-200 border-t-blue-600 rounded-full animate-spin"></div>
-        <p class="text-sm text-gray-500 mt-3">Searching...</p>
-      </div>
-    </div>
+
     
     <!-- Tabs -->
     <div class="flex space-x-2 mb-4">
-      <button data-tab="books" class="search-tab-button flex-1 py-2 text-center font-semibold text-white bg-gray-900 rounded-xl">Stories</button>
-      <button data-tab="authors" class="search-tab-button flex-1 py-2 text-center font-semibold text-gray-900 bg-gray-100 rounded-xl">Authors</button>
+      <button data-tab="books" class="search-tab-button flex-1 py-2 text-center font-semibold text-white bg-gray-900 rounded-xl" style="background-color: #1f2937 !important; color: #ffffff !important;">Stories</button>
+      <button data-tab="authors" class="search-tab-button flex-1 py-2 text-center font-semibold text-gray-900 bg-gray-100 rounded-xl" style="background-color: #f3f4f6 !important; color: #111827 !important;">Authors</button>
     </div>
 
     <!-- Stories Section -->
@@ -3034,9 +3175,13 @@ document.querySelectorAll('.search-tab-button').forEach(button => {
     document.querySelectorAll('.search-tab-button').forEach(btn => {
       btn.classList.remove('bg-gray-900', 'text-white');
       btn.classList.add('bg-gray-100', 'text-gray-900');
+      btn.style.backgroundColor = '#f3f4f6';
+      btn.style.color = '#111827';
     });
     button.classList.add('bg-gray-900', 'text-white');
     button.classList.remove('bg-gray-100', 'text-gray-900');
+    button.style.backgroundColor = '#1f2937';
+    button.style.color = '#ffffff';
     
     const tab = button.getAttribute('data-tab');
     if (tab === 'books') {
@@ -3089,7 +3234,6 @@ searchInput?.addEventListener('input', function(e) {
   
   document.getElementById('search-suggestions')?.classList.add('hidden');
   document.getElementById('category-filters')?.classList.remove('hidden');
-  document.getElementById('search-loading')?.classList.remove('hidden');
   
   searchTimeout = setTimeout(() => {
     performSearch(query);
@@ -3236,7 +3380,7 @@ async function performSearch(query) {
   } catch (error) {
     console.error('Search error:', error);
   } finally {
-    document.getElementById('search-loading')?.classList.add('hidden');
+    // Sin spinner
   }
 }
 
@@ -3490,12 +3634,22 @@ document.head.appendChild(style);
         </button>
       </div>
 
-      <!-- Botón BeaBoo Studio -->
-      <button onclick="openBeabooStudio()" class="w-full bg-blue-600 text-white p-3 rounded-xl font-semibold hover:bg-blue-700 active:scale-[0.98] transition flex items-center justify-center mb-4">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/>
-        </svg>
-        BeaBoo Studio
+      <!-- BeaBoo Studio móvil -->
+      <button onclick="openBeabooStudio()" class="w-full bg-white rounded-2xl p-4 mb-4 border border-gray-200 active:scale-95 transition-all duration-200 shadow-sm">
+        <div class="flex items-center">
+          <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center mr-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/>
+            </svg>
+          </div>
+          <div class="flex-1 text-left">
+            <div class="font-semibold text-gray-900 text-base">BeaBoo Studio</div>
+            <div class="text-sm text-gray-500">Manage your stories</div>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </div>
       </button>
 
       <!-- Historias del usuario -->
@@ -3610,18 +3764,25 @@ document.head.appendChild(style);
           <div class="flex-1">
             <!-- Tab de Historias -->
             <div id="stories-tab-content" class="tab-content">
-              <!-- Botón BeaBoo Studio destacado -->
-              <div class="bg-gradient-to-r from-[#FE2C55] to-[#ff6b7a] rounded-2xl p-6 mb-8 text-white">
+              <!-- Botón BeaBoo Studio desktop -->
+              <div class="bg-white rounded-3xl p-8 mb-8 border border-gray-100 shadow-sm">
                 <div class="flex items-center justify-between">
-                  <div>
-                    <h3 class="text-2xl font-bold mb-2">BeaBoo Studio</h3>
-                    <p class="text-white text-opacity-90">Crea y gestiona tus historias con herramientas profesionales</p>
+                  <div class="flex items-center">
+                    <div class="w-16 h-16 bg-gray-800 rounded-2xl flex items-center justify-center mr-6">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 class="text-2xl font-bold text-gray-900 mb-2">BeaBoo Studio</h3>
+                      <p class="text-gray-600">Create and manage your stories with professional tools</p>
+                    </div>
                   </div>
-                  <button onclick="openBeabooStudio()" class="bg-white text-[#FE2C55] px-6 py-3 rounded-xl font-medium hover:bg-gray-100 transition-all flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                      <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/>
+                  <button onclick="openBeabooStudio()" class="bg-gray-900 text-white px-8 py-4 rounded-2xl font-semibold hover:bg-gray-800 active:scale-95 transition-all duration-200 flex items-center">
+                    <span class="mr-2">Open Studio</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                     </svg>
-                    Abrir Studio
                   </button>
                 </div>
               </div>
