@@ -60,8 +60,8 @@ console.log('%cEste sitio está protegido contra inspección de código.', 'font
     /* ESTILOS BASE ADAPTADOS */
 body {
   font-family: 'Roboto', sans-serif;
-  background: white;
-  color: #000;
+  background: #ffffff !important;
+  color: #000000 !important;
 }
 
 /* Sobrescribir estilos verdes a rosa TikTok */
@@ -964,12 +964,13 @@ setInterval(checkScheduledChapters, 60000);
     /* ---------- NUEVA SECCIÓN: Estilos para Computadora ---------- */
     @media (min-width: 1024px) {
       body.desktop {
-        background-color: #ffffff;
+        background-color: #ffffff !important;
         font-family: 'Nunito', sans-serif;
+        color: #000000 !important;
       }
 
       #bottom-nav {
-        background-color: rgba(255, 255, 255, 0.9);
+        background-color: rgba(255, 255, 255, 0.9) !important;
       }
 
       /* Hacer las imágenes de autores destacados circulares en desktop */
@@ -1081,6 +1082,7 @@ setInterval(checkScheduledChapters, 60000);
     }
   </style>
   <link rel="stylesheet" href="stories.css">
+  <link rel="stylesheet" href="light-theme-override.css">
   <script src="apple-animations.js"></script>
   <script>
     /*********************** BLOQUEO DE ACCESO EN COMPUTADORAS (Móvil obligatorio) ***********************/
@@ -1097,53 +1099,16 @@ setInterval(checkScheduledChapters, 60000);
     window.addEventListener('online', function() {
       location.reload();
     });
-    /* FUNCIÓN PARA ESTABLECER EL TEMA GLOBAL (día/noche) Y COLOR DE FUENTE */
-    function setThemeBasedOnTime() {
-      const hour = new Date().getHours();
-      let bg, fontColor;
-      if (hour >= 6 && hour < 18) {
-        bg = "#ffffff";
-        fontColor = "#58CC02";
-      } else {
-        bg = "#0d1b2a";
-        fontColor = "#58CC02";
-      }
-      document.body.style.backgroundColor = bg;
-      document.body.style.color = fontColor;
-      updateSectionThemes(bg, fontColor);
+    /* TEMA CLARO FIJO - Sin cambio automático */
+    function setLightTheme() {
+      document.body.style.backgroundColor = "#ffffff";
+      document.body.style.color = "#000000";
       const bottomNav = document.getElementById('bottom-nav');
       if (bottomNav) {
-        bottomNav.style.backgroundColor = (hour >= 6 && hour < 18) ?
-          "rgba(255,255,255,0.8)" :
-          "rgba(13,27,42,0.8)";
+        bottomNav.style.backgroundColor = "rgba(255,255,255,0.9)";
       }
     }
-
-    function updateSectionThemes(bg, fontColor) {
-      const sections = [
-        "search-view",
-        "profile-view",
-        "story-detail-modal",
-        "story-creation-view",
-        "story-details-view",
-        "story-edit-view",
-        "profile-edit-modal",
-        "author-profile-modal",
-        "support-modal",
-        "followers-modal",
-        "following-modal",
-        "notifications-modal",
-        "blocked-error-modal"
-      ];
-      sections.forEach(function(id) {
-        var el = document.getElementById(id);
-        if (el) {
-          el.style.backgroundColor = bg;
-          el.style.color = fontColor;
-        }
-      });
-    }
-    window.addEventListener('load', setThemeBasedOnTime);
+    window.addEventListener('load', setLightTheme);
     window.addEventListener('load', function() {
       if (window.innerWidth >= 1024) {
         document.body.classList.add('desktop');
@@ -1329,7 +1294,7 @@ setInterval(checkScheduledChapters, 60000);
 </head>
 
 <!-- MODAL DE NOTIFICACIONES estilo Apple -->
-<div id="notifications-modal" class="fixed inset-0 z-50 hidden bg-gray-50">
+<div id="notifications-modal" class="fixed inset-0 z-50 hidden" style="background-color: #f9f9f9 !important; color: #000000 !important;">
   <div class="sticky top-0 z-10 bg-white/95 backdrop-blur-xl">
     <div class="flex items-center justify-between px-6 py-4">
       <button onclick="closeNotifications()" class="text-blue-600 font-medium">Back</button>
@@ -1454,7 +1419,7 @@ function markAllAsRead() {
 </div>
 
 <!-- MODAL DE LISTA DE SEGUIDORES -->
-<div id="followers-modal" class="fixed inset-0 overflow-y-auto z-50 hidden bg-white" style="z-index: 9999;">
+<div id="followers-modal" class="fixed inset-0 overflow-y-auto z-50 hidden" style="z-index: 9999; background-color: #ffffff !important; color: #000000 !important;">
   <div class="h-full flex flex-col">
     <div class="sticky top-0 bg-white border-b border-gray-200 p-4 z-10">
       <div class="flex items-center justify-between">
@@ -1475,7 +1440,7 @@ function markAllAsRead() {
 </div>
 
 <!-- MODAL DE LISTA DE SIGUIENDO -->
-<div id="following-modal" class="fixed inset-0 overflow-y-auto z-50 hidden bg-white" style="z-index: 9999;">
+<div id="following-modal" class="fixed inset-0 overflow-y-auto z-50 hidden" style="z-index: 9999; background-color: #ffffff !important; color: #000000 !important;">
   <div class="h-full flex flex-col">
     <div class="sticky top-0 bg-white border-b border-gray-200 p-4 z-10">
       <div class="flex items-center justify-between">
@@ -1496,7 +1461,7 @@ function markAllAsRead() {
 </div>
 
 <!-- MODAL DE SOPORTE -->
-<div id="support-modal" class="fixed inset-0 z-50 hidden bg-white">
+<div id="support-modal" class="fixed inset-0 z-50 hidden" style="background-color: #ffffff !important; color: #000000 !important;">
   <div class="w-full h-full min-h-screen">
     <div id="support-form-container" class="bg-white h-full min-h-screen p-8">
       <div class="flex items-center mb-6">
@@ -1614,7 +1579,7 @@ function markAllAsRead() {
 </div>
 
 <!-- PANTALLA DE CHAT EN TIEMPO REAL -->
-<div id="chat-view" class="fixed inset-0 hidden bg-white text-black" style="z-index: 9999;">
+<div id="chat-view" class="fixed inset-0 hidden" style="z-index: 9999; background-color: #ffffff !important; color: #000000 !important;">
   <!-- Vista de conversaciones (móvil first) -->
   <div id="conversations-view" class="h-full flex flex-col">
     <!-- Header principal -->
@@ -1944,7 +1909,7 @@ function markAllAsRead() {
   <img src="https://ideogram.ai/g/hJJQb0VZSQicLDiADD7CZQ/3" alt="Historia Bloqueada" class="w-3/4 h-auto">
 </div>
 
-<body class="bg-white font-sans text-[#161823]">
+<body class="bg-white font-sans text-black" style="background-color: #ffffff !important; color: #000000 !important;">
   
   <div id="auth-form" class="w-full min-h-screen flex flex-col justify-center p-6 bg-white">
     <!-- Apple-style logo -->
@@ -2053,8 +2018,114 @@ function markAllAsRead() {
   </style>
 </body>
 
+<script>
+// Configuración de Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyBWBr3sud1_lDPmtLJI42pCBZnco5_vyCc",
+  authDomain: "noble-amp-458106-g0.firebaseapp.com",
+  databaseURL: "https://noble-amp-458106-g0-default-rtdb.firebaseio.com",
+  projectId: "noble-amp-458106-g0",
+  storageBucket: "noble-amp-458106-g0.firebasestorage.app",
+  messagingSenderId: "744574411059",
+  appId: "1:744574411059:web:72a70955f1400df6645e46",
+  measurementId: "G-XEQ1J354HM"
+};
+
+// Inicializar Firebase
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
+
+// Controlar la visibilidad de la barra de navegación basándose en el estado de autenticación
+firebase.auth().onAuthStateChanged(function(user) {
+  const authForm = document.getElementById('auth-form');
+  const mainApp = document.getElementById('main-app');
+  const bottomNav = document.getElementById('bottom-nav');
+  
+  if (user) {
+    // Usuario autenticado - mostrar la aplicación principal y la barra de navegación
+    authForm.style.display = 'none';
+    mainApp.style.display = 'flex';
+    bottomNav.classList.remove('hidden');
+  } else {
+    // Usuario no autenticado - mostrar formulario de login y ocultar barra de navegación
+    authForm.style.display = 'flex';
+    mainApp.style.display = 'none';
+    bottomNav.classList.add('hidden');
+  }
+});
+
+// Funciones de autenticación
+let isSignUp = false;
+
+document.getElementById('toggleAuth').addEventListener('click', function() {
+  isSignUp = !isSignUp;
+  const submitButton = document.getElementById('submitButton');
+  const toggleButton = document.getElementById('toggleAuth');
+  const authTitle = document.getElementById('auth-title');
+  
+  if (isSignUp) {
+    submitButton.textContent = 'Create Account';
+    toggleButton.textContent = 'Sign In Instead';
+    authTitle.textContent = 'Create Account';
+  } else {
+    submitButton.textContent = 'Sign In';
+    toggleButton.textContent = 'Create Account';
+    authTitle.textContent = 'Sign In';
+  }
+});
+
+document.getElementById('authForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const email = document.getElementById('emailInput').value;
+  const password = document.getElementById('passwordInput').value;
+  const submitButton = document.getElementById('submitButton');
+  const errorDiv = document.getElementById('authError');
+  
+  submitButton.disabled = true;
+  submitButton.textContent = isSignUp ? 'Creating Account...' : 'Signing In...';
+  errorDiv.classList.add('hidden');
+  
+  const authPromise = isSignUp 
+    ? firebase.auth().createUserWithEmailAndPassword(email, password)
+    : firebase.auth().signInWithEmailAndPassword(email, password);
+  
+  authPromise
+    .then((userCredential) => {
+      // Éxito - el onAuthStateChanged se encargará de mostrar la aplicación
+      console.log('Authentication successful');
+    })
+    .catch((error) => {
+      console.error('Authentication error:', error);
+      errorDiv.textContent = error.message;
+      errorDiv.classList.remove('hidden');
+    })
+    .finally(() => {
+      submitButton.disabled = false;
+      submitButton.textContent = isSignUp ? 'Create Account' : 'Sign In';
+    });
+});
+
+function resetPassword() {
+  const email = document.getElementById('emailInput').value;
+  if (!email) {
+    alert('Please enter your email address first');
+    return;
+  }
+  
+  firebase.auth().sendPasswordResetEmail(email)
+    .then(() => {
+      alert('Password reset email sent! Check your inbox.');
+    })
+    .catch((error) => {
+      alert('Error: ' + error.message);
+    });
+}
+</script>
+
 <!-- APLICACIÓN PRINCIPAL ESTILO TIKTOK (MODO CLARO) -->
-<div id="main-app" class="h-screen flex flex-col bg-white font-sans text-black">
+<div id="main-app" class="h-screen flex flex-col font-sans" style="background-color: #ffffff !important; color: #000000 !important;">
   <!-- TOP BAR estilo Apple -->
   <div class="flex items-center justify-between px-6 py-4 sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-gray-200/50">
     <h1 id="app-name" class="text-2xl font-bold text-gray-900 tracking-tight">BeaBoo</h1>
@@ -2251,7 +2322,7 @@ firebase.auth().onAuthStateChanged(user => {
   </div>
 
   <!-- BOTTOM NAVIGATION estilo Apple -->
-  <div id="bottom-nav" class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-xl border-t border-gray-200/50 transition-all duration-300 pb-safe">
+  <div id="bottom-nav" class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-xl border-t border-gray-200/50 transition-all duration-300 pb-safe hidden">
     <div class="flex justify-around items-center px-2 py-1">
       <button onclick="openHome()" class="nav-btn flex flex-col items-center py-2 px-4 text-gray-600 active:scale-90 transition-all duration-200" data-page="home">
         <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 20 20">
@@ -2476,13 +2547,90 @@ firebase.auth().onAuthStateChanged(user => {
         }, 150);
       });
     });
+    
+    // Funciones de navegación
+    function openHome() {
+      // Ocultar todas las vistas
+      document.querySelectorAll('[id$="-view"], [id$="-modal"]').forEach(el => {
+        if (el.id !== 'main-app') el.classList.add('hidden');
+      });
+      document.getElementById('main-app').classList.remove('hidden');
+      setActiveNavButton('home');
+    }
+    
+    function openSearch() {
+      document.getElementById('search-view').classList.remove('hidden');
+      document.getElementById('main-app').classList.add('hidden');
+      setActiveNavButton('search');
+    }
+    
+    function closeSearch() {
+      document.getElementById('search-view').classList.add('hidden');
+      document.getElementById('main-app').classList.remove('hidden');
+      setActiveNavButton('home');
+    }
+    
+    function openCommunity() {
+      document.getElementById('community-view').classList.remove('hidden');
+      document.getElementById('main-app').classList.add('hidden');
+      setActiveNavButton('community');
+    }
+    
+    function closeCommunity() {
+      document.getElementById('community-view').classList.add('hidden');
+      document.getElementById('main-app').classList.remove('hidden');
+      setActiveNavButton('home');
+    }
+    
+    function openProfile() {
+      document.getElementById('profile-view').classList.remove('hidden');
+      document.getElementById('main-app').classList.add('hidden');
+      setActiveNavButton('profile');
+    }
+    
+    function closeCreatorHub() {
+      document.getElementById('creator-hub-view').classList.add('hidden');
+      document.getElementById('main-app').classList.remove('hidden');
+      setActiveNavButton('home');
+    }
+    
+    function openMessages() {
+      document.getElementById('chat-view').classList.remove('hidden');
+      document.getElementById('main-app').classList.add('hidden');
+    }
+    
+    function closeChat() {
+      document.getElementById('chat-view').classList.add('hidden');
+      document.getElementById('main-app').classList.remove('hidden');
+    }
+    
+    function openNotifications() {
+      document.getElementById('notifications-modal').classList.remove('hidden');
+    }
+    
+    function closeNotifications() {
+      document.getElementById('notifications-modal').classList.add('hidden');
+    }
+    
+    // Hacer las funciones globales
+    window.openHome = openHome;
+    window.openSearch = openSearch;
+    window.closeSearch = closeSearch;
+    window.openCommunity = openCommunity;
+    window.closeCommunity = closeCommunity;
+    window.openProfile = openProfile;
+    window.closeCreatorHub = closeCreatorHub;
+    window.openMessages = openMessages;
+    window.closeChat = closeChat;
+    window.openNotifications = openNotifications;
+    window.closeNotifications = closeNotifications;
   </script>
 </div>
 
 
 
 <!-- VISTA CREATOR HUB estilo Apple -->
-<div id="creator-hub-view" class="fixed inset-0 bg-gray-50 text-black overflow-y-auto hidden z-50">
+<div id="creator-hub-view" class="fixed inset-0 overflow-y-auto hidden z-50" style="background-color: #f9f9f9 !important; color: #000000 !important;">
   <div class="sticky top-0 z-10 bg-white/95 backdrop-blur-xl border-b border-gray-100">
     <div class="flex items-center justify-between px-6 py-4">
       <button onclick="closeCreatorHub()" class="text-blue-600 font-medium text-base">Cancel</button>
@@ -2622,7 +2770,7 @@ firebase.auth().onAuthStateChanged(user => {
 </div>
 
 <!-- Community View estilo Apple -->
-<div id="community-view" class="fixed inset-0 bg-gray-50 text-black overflow-y-auto hidden z-50">
+<div id="community-view" class="fixed inset-0 overflow-y-auto hidden z-50" style="background-color: #f9f9f9 !important; color: #000000 !important;">
   <div class="sticky top-0 z-10 bg-white/95 backdrop-blur-xl">
     <div class="flex items-center justify-between px-6 py-4">
       <button onclick="closeCommunity()" class="text-blue-600 font-medium">Back</button>
@@ -2776,7 +2924,7 @@ document.getElementById('note-content')?.addEventListener('input', function() {
 </script>
 
 <!-- Search View estilo Apple -->
-<div id="search-view" class="fixed inset-0 bg-gray-50 text-black overflow-y-auto hidden z-50">
+<div id="search-view" class="fixed inset-0 overflow-y-auto hidden z-50" style="background-color: #f9f9f9 !important; color: #000000 !important;">
   <div class="sticky top-0 z-10 bg-white/95 backdrop-blur-xl">
     <div class="px-4 py-3">
       <div class="flex items-center space-x-2">
@@ -3261,7 +3409,7 @@ document.head.appendChild(style);
   });
 </script>
 <!-- PERFIL PROPIO CON SUBIDA DE FOTO EN TIEMPO REAL -->
-<div id="profile-view" class="fixed inset-0 overflow-y-auto z-40 hidden bg-gray-50 text-black scrollbar-hide">
+<div id="profile-view" class="fixed inset-0 overflow-y-auto z-40 hidden scrollbar-hide" style="background-color: #f9f9f9 !important; color: #000000 !important;">
   <!-- Vista móvil -->
   <div class="block lg:hidden">
     <!-- Header con botón volver y botones de acción -->
@@ -3654,7 +3802,7 @@ async function handleProfileImageUploadDesktop(event) {
 
 
 <!-- MODAL DE EDICIÓN DE PERFIL -->
-<div id="profile-edit-modal" class="fixed inset-0 overflow-y-auto z-50 hidden bg-white text-black">
+<div id="profile-edit-modal" class="fixed inset-0 overflow-y-auto z-50 hidden" style="background-color: #ffffff !important; color: #000000 !important;">
   <!-- Vista móvil (actual) -->
   <div class="block lg:hidden p-6">
     <button onclick="closeProfileEdit()" class="text-[#FE2C55] mb-4 flex items-center">
@@ -4045,7 +4193,7 @@ async function handleProfileImageUploadDesktop(event) {
 </script>
 
 <!-- MODAL DE PERFIL DEL AUTOR estilo Apple -->
-<div id="author-profile-modal" class="fixed inset-0 overflow-y-auto z-50 hidden bg-gray-50 text-black">
+<div id="author-profile-modal" class="fixed inset-0 overflow-y-auto z-50 hidden" style="background-color: #f9f9f9 !important; color: #000000 !important;">
   <div class="sticky top-0 z-10 bg-white/95 backdrop-blur-xl">
     <div class="flex items-center justify-between px-6 py-4">
       <button onclick="closeAuthorProfile()" class="text-blue-600 font-medium">Back</button>
@@ -4227,7 +4375,7 @@ function saveNote() {
 
 
 <!-- VISTA DE CREACIÓN DE HISTORIAS (Paso 1) - PANTALLA COMPLETA -->
-<div id="story-creation-view" class="fixed inset-0 overflow-y-auto z-50 hidden bg-gray-50 text-black">
+<div id="story-creation-view" class="fixed inset-0 overflow-y-auto z-50 hidden" style="background-color: #f9f9f9 !important; color: #000000 !important;">
   <div class="min-h-screen w-full">
     <!-- Header estilo iOS -->
     <div class="sticky top-0 z-10 bg-white/95 backdrop-blur-xl border-b border-gray-100">
@@ -4335,7 +4483,7 @@ function saveNote() {
 </div>
 
 <!-- VISTA DE DETALLES DE HISTORIA (Paso 2) - PANTALLA COMPLETA -->
-<div id="story-details-view" class="fixed inset-0 overflow-y-auto z-50 hidden bg-gradient-to-b from-white to-[#f9f9f9] text-black">
+<div id="story-details-view" class="fixed inset-0 overflow-y-auto z-50 hidden" style="background: linear-gradient(to bottom, #ffffff, #f9f9f9) !important; color: #000000 !important;">
   <div class="min-h-screen w-full">
     <!-- Header fijo -->
     <div class="sticky top-0 z-10 bg-white/80 backdrop-blur-md border-b border-gray-200 p-4">
@@ -4515,7 +4663,7 @@ function backToStoryType() {
 </script>
 
 <!-- MODAL DE EDICIÓN DE HISTORIAS (Paso 3) -->
-<div id="story-edit-view" class="fixed inset-0 overflow-y-auto z-50 hidden bg-gradient-to-b from-white to-[#f9f9f9] text-black">
+<div id="story-edit-view" class="fixed inset-0 overflow-y-auto z-50 hidden" style="background: linear-gradient(to bottom, #ffffff, #f9f9f9) !important; color: #000000 !important;">
   <div class="p-4 relative max-w-md mx-auto">
     <!-- Botón de cerrar -->
     <button onclick="closeStoryEdit()" class="text-[#FE2C55] mb-4 flex items-center">

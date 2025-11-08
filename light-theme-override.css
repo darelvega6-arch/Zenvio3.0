@@ -1,0 +1,111 @@
+/* FORZAR TEMA CLARO EN TODA LA APLICACIÓN */
+
+/* Elementos principales */
+body, html {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+/* Todas las vistas principales */
+#main-app,
+#creator-hub-view,
+#community-view,
+#search-view,
+#profile-view,
+#profile-edit-modal,
+#author-profile-modal,
+#story-creation-view,
+#story-details-view,
+#story-edit-view,
+#support-modal,
+#followers-modal,
+#following-modal,
+#notifications-modal,
+#chat-view {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+/* Fondos grises claros */
+.bg-gray-50,
+.bg-gray-100 {
+  background-color: #f9f9f9 !important;
+}
+
+/* Navegación inferior */
+#bottom-nav {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  color: #000000 !important;
+}
+
+/* Modales y overlays */
+.modal,
+.overlay,
+.popup {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+/* Tarjetas y contenedores */
+.card,
+.container,
+.section {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+/* Headers y navegación */
+.header,
+.nav,
+.navbar {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+/* Inputs y formularios */
+input,
+textarea,
+select {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border-color: #e5e7eb !important;
+}
+
+/* Botones */
+button {
+  color: inherit !important;
+}
+
+/* Texto */
+p, span, div, h1, h2, h3, h4, h5, h6 {
+  color: inherit !important;
+}
+
+/* Asegurar que no haya elementos con fondo oscuro */
+*[style*="background-color: #0d1b2a"],
+*[style*="background-color: #1a1a1a"],
+*[style*="background-color: #2d3748"],
+*[style*="background: #0d1b2a"],
+*[style*="background: #1a1a1a"],
+*[style*="background: #2d3748"] {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+/* Clases específicas que podrían tener modo oscuro */
+.dark,
+.dark-mode,
+.night-mode,
+.theme-dark {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  background-color: #f1f1f1 !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #c1c1c1 !important;
+}
