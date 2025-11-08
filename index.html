@@ -2033,8 +2033,22 @@ function closeCreatorHub() {
   document.getElementById('main-app').classList.remove('hidden');
 }
 
+function openProfile() {
+  document.getElementById('profile-view').classList.remove('hidden');
+  document.getElementById('main-app').classList.add('hidden');
+  document.getElementById('bottom-nav').style.display = 'none';
+  setActiveNavButton('profile');
+}
+
+function closeProfile() {
+  document.getElementById('profile-view').classList.add('hidden');
+  document.getElementById('main-app').classList.remove('hidden');
+  document.getElementById('bottom-nav').style.display = 'flex';
+}
+
 function openHome() {
   document.getElementById('main-app').classList.remove('hidden');
+  document.getElementById('bottom-nav').style.display = 'flex';
   document.querySelectorAll('.fixed.inset-0').forEach(el => {
     if (el.id !== 'main-app') el.classList.add('hidden');
   });
@@ -3689,6 +3703,13 @@ document.head.appendChild(style);
 
     
     <div class="px-6 py-6 relative">
+      <!-- Botón volver -->
+      <button onclick="closeProfile()" class="absolute top-4 left-4 w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors z-10">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+      
       <!-- Botón de ajustes en esquina superior derecha -->
       <button onclick="openProfileEdit()" class="absolute top-4 right-4 w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors z-10">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
