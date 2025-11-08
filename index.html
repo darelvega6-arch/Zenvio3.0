@@ -2097,7 +2097,7 @@ function showAnalytics() {
       
       <a
         href="#"
-        onclick="resetPassword()"
+        onclick="openPasswordReset()"
         class="block text-center text-sm text-blue-600 hover:text-blue-700 transition py-2"
       >
         Forgot password?
@@ -2129,6 +2129,129 @@ function showAnalytics() {
       <p>By continuing, you agree to our Terms of Service and Privacy Policy</p>
     </div>
   </div>
+
+  <!-- PASSWORD RESET MODAL -->
+  <div id="password-reset-modal" class="fixed inset-0 z-50 hidden" style="background-color: #ffffff !important;">
+    <div class="min-h-screen flex flex-col justify-center p-6">
+      <div class="flex items-center mb-8">
+        <button onclick="closePasswordReset()" class="text-blue-600 font-medium mr-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <h1 class="text-lg font-semibold text-gray-900">Reset Password</h1>
+      </div>
+
+      <div class="max-w-sm mx-auto w-full">
+        <div class="text-center mb-8">
+          <div class="w-20 h-20 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1721 9z" />
+            </svg>
+          </div>
+          <h2 class="text-2xl font-semibold text-gray-900 mb-2">Forgot Password?</h2>
+          <p class="text-gray-600 text-sm">Enter your email and we'll send you a reset link</p>
+        </div>
+
+        <form id="reset-form" class="space-y-4">
+          <input id="reset-email" type="email" placeholder="Email address" class="w-full px-4 py-4 bg-white border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm" required>
+          <button id="reset-submit" type="submit" class="w-full bg-blue-600 text-white py-4 font-semibold rounded-xl hover:bg-blue-700 active:scale-[0.98] transition-all shadow-md">Send Reset Link</button>
+        </form>
+
+        <div id="rate-limit-msg" class="hidden mt-4 p-4 bg-orange-50 border border-orange-200 rounded-xl">
+          <div class="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-orange-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
+            </svg>
+            <div>
+              <p class="text-sm font-medium text-orange-800">Daily limit reached</p>
+              <p class="text-xs text-orange-600 mt-1">You can only reset your password once per day</p>
+            </div>
+          </div>
+        </div>
+
+        <div id="reset-success" class="hidden mt-4 p-4 bg-green-50 border border-green-200 rounded-xl">
+          <div class="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <div>
+              <p class="text-sm font-medium text-green-800">Reset link sent!</p>
+              <p class="text-xs text-green-600 mt-1">Check your email for the reset link</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  function openPasswordReset() {
+    document.getElementById('password-reset-modal').classList.remove('hidden');
+    document.getElementById('auth-form').style.display = 'none';
+  }
+
+  function closePasswordReset() {
+    document.getElementById('password-reset-modal').classList.add('hidden');
+    document.getElementById('auth-form').style.display = 'block';
+    document.getElementById('reset-form').reset();
+    document.getElementById('rate-limit-msg').classList.add('hidden');
+    document.getElementById('reset-success').classList.add('hidden');
+  }
+
+  function checkResetLimit(email) {
+    const today = new Date().toDateString();
+    const resetData = localStorage.getItem('passwordReset_' + email);
+    
+    if (resetData) {
+      const data = JSON.parse(resetData);
+      if (data.date === today) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  function setResetLimit(email) {
+    const today = new Date().toDateString();
+    localStorage.setItem('passwordReset_' + email, JSON.stringify({
+      date: today,
+      count: 1
+    }));
+  }
+
+  document.getElementById('reset-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const email = document.getElementById('reset-email').value;
+    const submitBtn = document.getElementById('reset-submit');
+    
+    if (!checkResetLimit(email)) {
+      document.getElementById('rate-limit-msg').classList.remove('hidden');
+      return;
+    }
+    
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+    
+    try {
+      await firebase.auth().sendPasswordResetEmail(email);
+      setResetLimit(email);
+      document.getElementById('reset-success').classList.remove('hidden');
+      document.getElementById('reset-form').reset();
+      
+      setTimeout(() => {
+        closePasswordReset();
+      }, 3000);
+      
+    } catch (error) {
+      alert('Error: ' + error.message);
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Reset Link';
+    }
+  });
+  </script>
   
   <style>
     @keyframes fade-in {
